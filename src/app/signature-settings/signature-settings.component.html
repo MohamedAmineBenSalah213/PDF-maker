@@ -1,0 +1,11 @@
+
+<h1 class="display-4 " align="center">Signature</h1>
+<div class="example-button-row mt-5" *ngIf="isDrawn">
+    <button mat-stroked-button (click)="clear()" color="primary">Clear</button>
+    <button mat-stroked-button (click)="undo()" color="primary">Undo</button>
+    <button mat-stroked-button (click)="redo()" color="primary">Redo</button>
+    <button mat-stroked-button (click)="savePNG()" color="primary" >Save</button>
+  </div>
+<signature-pad #signature [options]="signaturePadOptions" (drawStart)="drawStart($event)" class="mt-5" (drawEnd)="drawComplete($event)" >
+ 
+</signature-pad> 

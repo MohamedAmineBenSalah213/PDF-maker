@@ -1,0 +1,157 @@
+.dropzone {
+  z-index: -999;
+  width: fit-content;
+  height: fit-content;
+}
+
+
+
+.bg-drag-drop {
+  background-color: rgb(111, 109, 255);
+}
+
+.handle {
+  color: black;
+  padding-right: 5px;
+}
+.zone{
+  border: 2px dashed black;
+  width: 400px;
+  height: 300px;
+}
+#label{
+  color:black;
+}
+.drag-drop {
+  margin-top: 2px;
+  margin-bottom: 2px;
+  padding: 5px;
+  z-index: 1000;
+  /* //color: white; */
+  touch-action: none;
+  user-select: none;
+/*  // background-color: white; */
+  justify-content: center;
+  
+
+}
+
+.drop-active {
+  background-color: yellow !important;
+
+}
+
+.drop-target {
+  background-color: rgb(0, 223, 89) !important;
+  color: black;
+  width: 120px;
+}
+
+.c {
+  float: left;
+}
+
+
+/* Responsive column widths */
+@media (min-width: 700px) {
+
+  /* 1 */
+  .c:first-child:last-child {
+    width: 100%;
+  }
+
+  /* 2 */
+  .c:nth-last-child(2):first-child,
+  .c:nth-last-child(2):first-child+.c {
+    width: 50%;
+  }
+
+  /* 3 */
+  .c {
+    width: 33.33333%;
+  }
+
+
+  /* 1 extra */
+  .c:nth-child(3n + 1):last-child {
+    width: 100%;
+  }
+
+  /* 2 extra */
+  .c:nth-child(3n + 1):nth-last-child(2),
+  .c:nth-child(3n + 1):nth-last-child(2)+.c {
+    width: 50%;
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* general styling */
+
+
+/* general scaffolding */
+body {
+  font-family: Georgia, Times, 'Times New Roman', serif;
+  font-size: 20px;
+  line-height: 28px;
+  color: #343536;
+}
+
+.wrapper:before,
+.wrapper:after {
+  content: ' ';
+  display: table;
+  clear: both;
+}
+
+/* coloring/sizing */
+.c {
+  color: white;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/***********************/
+.sidebar {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 250px;
+  background-color: #fff;
+}
+
+.sidebar-header {
+  padding: 10px 20px;
+  font-size: 18px;
+  line-height: 1.5;
+  border-bottom: 1px solid #f2f2f2;
+  border-left: 1px solid #f2f2f2;
+  box-sizing: border-box;
+
+}
+
+.content {
+  margin-left: 250px;
+  width: max-content;
+}
+
+.content-header {
+  font-size: 18px;
+  line-height: 1.5;
+
+  padding: 10px 20px;
+  border-bottom: 1px solid #f2f2f2;
+  border-left: 1px solid #f2f2f2;
+  box-sizing: border-box;
+  background-color: #fff;
+}

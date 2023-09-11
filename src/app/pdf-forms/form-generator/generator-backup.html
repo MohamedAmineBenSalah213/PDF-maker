@@ -1,0 +1,66 @@
+<!-- <div class="grid  auto-cols-max  gap-2 ">
+
+  <div class="box row-start-1 row-span-2">
+      <div class=" w-full flex flex-row items-center justify-center">
+          <button mat-flat-button color="primary" type="button" (click)="getCord()">Save dragged elements into position </button>
+      </div>
+      <div *ngFor="let element of tasks" class="drag-drop " type="hidden" [value]="element.id">
+          <a class="handle">
+              <i class="i fa fa-arrows"></i>
+          </a>{{element.fieldName}} {{element.lastName}}
+      </div>
+  </div>
+      <div class=" w-full flex flex-row items-center justify-center">
+          <button mat-flat-button color="primary" type="button" (click)="getCord()">Save dragged elements into position </button>
+      </div>
+
+  {{pdfSrc}}
+</div> -->
+
+<div class="grid grid-cols-1 md:grid-cols-7  gap-3">
+  <div class="col-span-3  flex justify-center " >  <app-pdf-renderer class="sm:w-full" style="overflow: auto;" #pdfViewer [pdfSrc]="pdfSrc" [pageNumber]="pageNumber" >
+  </app-pdf-renderer></div>
+  <div class=" col-span-4" style="height: 100vh;
+  position: sticky;
+  top: 0px;
+  right: 0px;">
+    <div class="box row-start-1 row-span-2 p-3">
+<div class=" grid grid-cols-3 gap-2 py-2 sm:flex-col" >
+
+  <button mat-stroked-button color="primary" class="text-lg" [disabled]="usedSignature" >
+    <i class="fa-solid fa-font"></i>
+    Text
+  </button>
+  <button mat-stroked-button color="primary" class="text-lg" [disabled]="usedSignature" >
+    <i class="fa-solid fa-clock"></i>
+    Date & Time
+  </button>
+  <button mat-stroked-button color="primary" class="text-lg" [disabled]="usedSignature" >
+    <i class="fa-brands fa-fonticons-fi"></i>
+    Initials
+  </button>
+  <button mat-stroked-button color="primary" class="text-lg" [disabled]="usedSignature" >
+    <i class="fa-regular fa-square-check"></i>
+    Checkbox
+  </button>
+  <button mat-stroked-button color="primary" class="text-lg" [disabled]="usedSignature" >
+    <i class="fa-regular fa-circle-dot"></i>
+   Radio button
+  </button>
+  <button mat-stroked-button color="primary" class="text-lg" [disabled]="usedSignature" >
+    <i class="fa-regular fa-square-caret-down"></i>
+   Dropdown
+  </button>
+  <button mat-stroked-button color="primary" class="text-lg" (click)="signatureField()"  >
+    <i class="fa-solid fa-signature"></i>
+    signature
+  </button>
+</div>
+      <div *ngFor="let element of tasks" class="drag-drop " type="hidden" [value]="element.id">
+          <a class="handle">
+              <i class="i fa fa-arrows"></i>
+          </a>{{element.fieldName}} {{element.lastName}}
+      </div>
+  </div>
+  </div>
+</div>

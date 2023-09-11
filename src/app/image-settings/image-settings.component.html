@@ -1,0 +1,5 @@
+<form (submit)="onSubmit()">
+    <input type="file" (change)="onFileSelected($event)" accept=".jpg,.jpeg,.gif,.tiff,.tif,.bmp,.png,.webp" />
+    <button type="submit">Upload Image</button>
+  </form>
+  <img [src]="imageUrl" class="drag-drop" alt="Selected Image" *ngIf="imageUrl" />

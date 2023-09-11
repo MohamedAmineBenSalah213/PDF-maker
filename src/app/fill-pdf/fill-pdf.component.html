@@ -1,0 +1,112 @@
+
+<div class="container ms-6 mt-3">
+  <div class="row">
+    <div class="col-md-6 mx-3">
+      <div class="grid grid-cols-2 gap-2 py-2 md:flex-col">
+        <button mat-stroked-button color="basic" class="text-lg" (click)="savePdf()">
+          <i class="fa fa-arrow-down"></i>Save</button>
+        <button mat-stroked-button  color="primary" class="text-lg mx-3" (click)="getFields()">Get Fields</button>
+        <button class="btn btn-primary mx-3" (click)="createTextField(fieldName,defaultValue,10,10,width_,height_,pageNum)">Update PDF</button>
+        <button class="btn btn-primary mx-3" (click)="getFieldValue()">Get Field Value</button>
+        <div>
+        <!--   Mouse X: {{ mouseX }}, Mouse Y: {{ mouseY }} -->
+        </div>
+        
+      
+      
+        <button mat-stroked-button color="primary" class="text-lg mx-3">
+          <i class="fa-solid fa-toggle-on"></i>
+          drag-drop
+        </button>
+      
+      </div>
+        
+        </div>
+     </div>
+     <div class="col-md-6">
+
+     </div>
+     
+</div>
+<div class="d-flex justify-content-center">
+<div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+  <div class="btn-group mr-2" role="group" aria-label="First group">
+    <button mat-stroked-button color="primary" class="text-lg" (click)="signatureField()"  >
+      <i class="fa-solid fa-signature"></i>
+      signature
+    </button>
+    <button mat-stroked-button color="primary" class="text-lg mx-3"  (click)="onClickTextButton()">
+      <i class="fa-solid fa-font"></i>
+      Text
+    </button>
+    <div id="image" class="drag-drop"></div>
+   <!--  (click)="fillStamp($data)" -->
+    <button mat-stroked-button color="primary" class="text-lg mx-3"  (click)="onClickStampButton()" >
+      <i class="fa-solid fa-stamp"></i>
+        Stamp
+    </button>    
+    <button mat-stroked-button color="primary" class="text-lg mx-3"  (click)="drawImage()" >
+      <i class="fa-solid fa-stamp"></i>
+      Draw Image 
+    </button>
+   <div class="drag-drop" style="background-color: red;">XYZ</div>
+    <button mat-stroked-button color="primary" class="text-lg mx-3" (click)="addcheckbox()"  >
+      <i class="fa-regular fa-square-check"></i>
+      CheckBox
+    </button>
+  </div>
+</div>
+</div>
+  <div class="d-flex justify-content-center">
+    <div class="input-group mb-3"  *ngIf="Stampsettings">
+      <label class="input-group-text" for="inputGroupFile01">Upload</label>
+      <input type="file" class="form-control" id="inputGroupFile01"  (change)="onFileSelected($event)" accept=".png">
+    </div>
+    
+  </div>
+<button (click)="changeclass()">Button</button> 
+<div class="container  mt-4">
+  <div class="row">
+    <div [ngClass]="(textFieldsettings|| signature) ? 'col-8' : 'col-12'">
+      
+      <pdf-viewer  id="pdfCanvas" class="dropzone" [src]="src"
+        [render-text]="false"
+        [original-size]="false"
+        style="height:600px;overflow:auto;"
+        [original-size]="true"
+        (mousedown)="onViewerMouseDown($event)"
+        #componentRef>
+      </pdf-viewer>
+  
+    </div>
+    <div class="col-4" >
+      <div class="mb-3 ">
+        <div *ngFor="let field of fields; let i = index">
+          <h4>{{ i + 1 }} | <span class="text-primary">{{ field.type }}</span> :
+            <span
+              class="text-danger"
+              (click)="editFieldName(field)"
+              *ngIf="!field.editing"
+            >
+              {{ field.name }}
+            </span>
+            <input
+              *ngIf="field.editing"
+              [(ngModel)]="field.name"
+              (blur)="saveFieldName(field)"
+            />
+          </h4>
+        </div>
+     </div>
+    <!--  <div class="col-4" *ngIf="checkBoxsettings" >
+      <app-check-box-settings></app-check-box-settings>
+     </div> -->
+    <!--  <div class="col-4" *ngIf="stamp" >
+      <app-image-settings></app-image-settings>
+     </div> -->
+    <div class="col-4" *ngIf="signature" >
+    <app-signature-settings (canvasDataEmitter)=" drawSvgPaths($event)"></app-signature-settings>
+   </div>
+
+  </div>
+</div> 

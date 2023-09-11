@@ -1,0 +1,17 @@
+#canvas-wrapper{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+}
+#holder{
+  display: flex;
+  justify-content: center;
+  position: relative;
+  height:800px;
+
+}
+#pdfCanvas{
+  position: absolute;
+  height:800px;
+}

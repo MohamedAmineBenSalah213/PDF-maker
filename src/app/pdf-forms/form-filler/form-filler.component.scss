@@ -1,0 +1,38 @@
+.container {
+  margin: 2rem;
+}
+
+.form-value{
+    position: absolute;
+    left: 1200px;
+    top: 0px;
+}
+select,
+#input-form {
+    position: absolute;
+    z-index: 1;
+    & input {
+        position: absolute;
+        background: transparent;
+
+    }
+}
+::ng-deep .ng2-pdf-viewer-container{
+  height: auto !important;
+}
+::ng-deep .pdfViewer {
+  width: fit-content !important;
+}
+.ng-invalid.ng-untouched  {
+  border: none;
+}
+.ng-invalid.ng-touched  {
+  border: 1px dotted rgb(255, 0, 0);
+}
+.ng-valid.ng-touched  {
+  border: 1px solid rgb(0, 175, 41);
+}
+
+select{
+  border:1px solid black;
+}

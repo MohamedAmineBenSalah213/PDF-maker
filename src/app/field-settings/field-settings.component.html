@@ -1,0 +1,124 @@
+<div class="container " style="height:500px;">
+  <h1 class="display-4 " align="center">Text Field</h1>
+  <form>
+    <mat-form-field  align="center" appearance="outline">
+      <mat-label>Field Name</mat-label>
+      <input  matInput  type="text" class="form-control" id="fieldName" name="fieldName" [(ngModel)]="fieldName" required placeholder="Name">
+    </mat-form-field>
+    <div class="mb-3">
+      <label for="defVal" class="form-label">Select type:</label>
+      <select class="form-select" id="selectedType" [(ngModel)]="selectedType" name="selectedType">
+       <option value="number">number</option>
+       <option value="text">Text</option>
+       <option  value="date">Date</option>
+       <option  value="email">email</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" [(ngModel)]="has_default_value" name="has_default_value" (ngModelChange)="setDefaultValue()">
+        <label class="form-check-label">Set a default field value</label>
+        <div *ngIf="has_default_value && selectedType=='text'" >
+        <mat-form-field  align="center" appearance="outline">
+          <mat-label>default field value</mat-label>
+          <input  matInput  type="text" class="form-control" id="fieldName" [(ngModel)]="defVal" name="defVal"  required placeholder="Name">
+        </mat-form-field>
+        </div>
+      
+        <!--   <label></label>
+          <input type="text" [(ngModel)]="defVal" name="defVal"  required>
+        </div> -->
+        <div *ngIf="has_default_value && selectedType=='number'" >
+          <label>default field value</label>
+          <input type="number" [(ngModel)]="defVal" name="defVal"required >
+        </div>
+        <div *ngIf="has_default_value && selectedType=='email'" >
+          <label>default field value</label>
+          <input type="email" [(ngModel)]="defVal" name="defVal" required >
+        </div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" [disabled]="has_default_value" name="is_required"[(ngModel)]="is_Required" (change)="toggleRequired()">
+        <label class="form-check-label">Required</label>
+      </div>
+    </div>
+    <div class="mb-3">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" [disabled]="has_default_value"name="accept_multiple_input" [(ngModel)]="accept_multiple_input">
+        <label class="form-check-label">Accept Multiple Input</label>
+      </div>
+    </div>
+   
+    <div *ngIf="selectedType === 'text'">
+      <div class="mb-3">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" [disabled]="has_default_value" name="has_min_length" [(ngModel)]="has_min_length">
+          <label class="form-check-label">Set min length</label>
+          <div *ngIf="has_min_length">
+            <input name="maxLength" placeholder="min length" [(ngModel)]="minLength" type="number">
+          </div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" [disabled]="has_default_value" name="has_max_length" [(ngModel)]="has_max_length">
+          <label class="form-check-label">Set max length</label>
+          <div *ngIf="has_max_length">
+            <input name="maxLength" placeholder="max length" [(ngModel)]="maxLength" type="number">
+          </div>
+        </div>
+      </div>
+    </div>  
+    <div *ngIf="selectedType === 'number'">
+      <div class="mb-3">
+        <div class="form">
+          <input class="form-check-input" type="checkbox" [disabled]="has_default_value"name="has_min_value" [(ngModel)]="has_min_value">
+          <label class="form-check-label">Set min value</label>
+        </div>
+          <div *ngIf="has_min_value">
+            <input name="maxValue" placeholder="min value" [(ngModel)]="minValue" type="number">
+          </div>
+        
+      </div>
+      <div class="mb-3">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" [disabled]="has_default_value"name="has_max_value" [(ngModel)]="has_max_value">
+          <label class="form-check-label">Set max value</label>
+        </div>
+        <div *ngIf="has_max_value">
+          <input name="maxValue" placeholder="max value" [(ngModel)]="maxValue" type="number">
+        </div>
+      </div>
+    </div>
+    
+  <!--   <div class="mb-3" *ngIf="has_default_value">
+      <label for="defVal" class="form-label">Select a default value:</label>
+      <select class="form-select" id="defVal" [(ngModel)]="defVal" name="defVal">
+        <option *ngFor="let default of defaultValues "[value]="default.key">
+          {{ default.value  }}
+        </option>
+      </select>
+    </div> -->
+    <div class="mb-3">
+      <label>Assignment:</label>
+      <div *ngFor="let assigned of assignementList">
+        <button class="btn btn-secondary me-2" (click)="toggle(assigned.id)" [value]="assigned.id">{{ assigned.name }}</button>
+      </div>
+    </div>
+    <div class="mb-3" *ngIf="showUsers">
+      <label>Select a user:</label>
+      <select class="form-select">
+        <option *ngFor="let user of users" [value]="user.email">{{ user.name | titlecase }}</option>
+      </select>
+    </div>
+    <div class="mb-3" *ngIf="showStages">
+      <label>Select a stage:</label>
+      <select class="form-select">
+        <option *ngFor="let stage of stages" [value]="stage.id">{{ stage.name | titlecase }}</option>
+      </select>
+    </div>
+    <button class="btn btn-primary float-right" type="button" (click)="submit()">Submit</button>
+  </form>
+</div>

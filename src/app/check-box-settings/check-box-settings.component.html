@@ -1,0 +1,39 @@
+<div class="container " style=" width: '400px'">
+    <h1 class="display-4" align="center"> Check Field</h1>
+    <mat-dialog-content>
+    <form>
+        <div align="center">
+        <mat-form-field  align="center" appearance="outline">
+            <mat-label>CheckBox Name</mat-label>
+            <input  matInput  type="text" class="form-control" id="fieldName" name="fieldName" [(ngModel)]="fieldName" required placeholder="Name">
+          </mat-form-field>
+        </div>   
+         
+<div class="mb-3" align="center" style=" min-width: 100px;">
+    <label>Assignment:</label>
+    <div *ngFor="let assigned of assignementList">
+      <button class="btn me-2" mat-stroked-button color="primary" (click)="toggle(assigned.id)" [value]="assigned.id">{{ assigned.name }}</button>
+    </div>
+  </div>
+  <div class="mb-3" align="center">
+    <mat-form-field align="center" *ngIf="showUsers">
+        <mat-label> Select a user:</mat-label>
+        <mat-select name="user" [(ngModel)]="user">
+          <mat-option  *ngFor="let user of users" [value]="user.email" >{{ user.name | titlecase }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+  </div>
+  <div class="mb-3" align="center" *ngIf="showStages">
+    <mat-form-field align="center" *ngIf="showUsers">
+        <mat-label> Select a stage:</mat-label>
+        <mat-select name="selectstage" [(ngModel)]="selectstage">
+          <mat-option  *ngFor="let user of users" [value]="user.email" >{{ user.name | titlecase }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+  </div>
+</form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button class="btn btn-primary float-right" #checkboxContainer type="button" (click)="submit()">Submit</button>
+</mat-dialog-actions>
+  
